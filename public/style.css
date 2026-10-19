@@ -1,0 +1,272 @@
+/* The regular Mochi Boom font is the same one used in your mockup. */
+@font-face {
+  font-family: "Mochi Boom";
+  src: url("assets/mochi-boom.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --day: #b6ddec;
+  --night: #345e6e;
+  --lettering: #fff;
+  --shadow: 0 5px 5px rgb(49 82 99 / 28%);
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--day); color: var(--lettering); }
+body, button { font-family: "Mochi Boom", "Arial Rounded MT Bold", sans-serif; }
+button { -webkit-tap-highlight-color: transparent; }
+[hidden] { display: none !important; }
+
+/* Each page fills the browser, with no Figma editor frame around it. */
+.screen {
+  position: relative;
+  min-height: 650px;
+  height: 100svh;
+  overflow: hidden;
+  background: var(--day);
+}
+h1 {
+  position: absolute;
+  top: 2.5%;
+  left: 3%;
+  right: auto;
+  max-width: 94%;
+  margin: 0;
+
+  font-size: clamp(48px, 7.8vw, 128px);
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  text-align: right;
+  text-shadow: var(--shadow);
+}
+h1:focus { outline: none; }
+.pixel-art { image-rendering: pixelated; object-fit: contain; }
+
+/* The art has transparent margins. Keep the GIF at an integer scale. */
+.pet-stage {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 240px;
+  height: 240px;
+  transform: translate(-50%, -50%);
+}
+.pet { display: block; width: 240px; height: 240px; }
+.home-actions {
+  position: absolute;
+  left: 6%;
+  bottom: 14%;
+  display: grid;
+  justify-items: start;
+  gap: 16px;
+}
+.text-button {
+  padding: 5px 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font-size: clamp(24px, 2.5vw, 40px);
+  font-weight: 400;
+  line-height: 1.3;
+  text-shadow: var(--shadow);
+  text-align: left;
+  cursor: pointer;
+}
+.text-button:hover { transform: translateY(-2px); }
+button:focus-visible { outline: 3px dashed white; outline-offset: 7px; }
+.text-button:disabled { cursor: wait; opacity: 0.65; }
+#meal-note {
+  position: absolute;
+  top: 3%;
+  width: 100%;
+  margin: 0;
+  text-align: center;
+  font-size: 22px;
+}
+
+/* Fish move within this rectangle, away from the title and instruction. */
+.instruction {
+  position: absolute;
+  top: 21%;
+  left: 5%;
+  width: 90%;
+  margin: 0;
+  text-align: center;
+  font-size: clamp(24px, 3.1vw, 48px);
+  line-height: 1.4;
+}
+.back-button { position: absolute; left: 3%; bottom: 3%; font-size: 20px; z-index: 2; }
+#pond { position: absolute; inset: 32% 3% 10%; }
+.fish {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 64px;
+  height: 64px;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  touch-action: manipulation;
+  will-change: transform;
+}
+.fish img { display: block; width: 60px; height: 60px; pointer-events: none; }
+.win-message {
+  position: absolute;
+  inset: 26% 5% 10%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: clamp(46px, 7.5vw, 120px);
+  line-height: 1.15;
+}
+.win-message p { margin: 0 0 14px; }
+.win-message .text-button { font-size: inherit; text-align: center; }
+
+/* Sleep screen with your original pixel-art lamp. */
+.night { background: var(--night); }
+.sleeping-stage { width: 320px; }
+.sleeping-pet { display: block; width: 320px; height: 240px; }
+.wake-button { position: absolute; left: 6%; bottom: 9%; }
+#lamp {
+  position: absolute;
+  top: 29%;
+  left: 65%;
+  width: 80px;
+  height: 80px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  filter: drop-shadow(0 12px 17px rgb(255 224 116 / 15%));
+}
+#lamp img {
+  display: block;
+  width: 80px;
+  height: 80px;
+  pointer-events: none;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+@media (max-width: 600px) {
+  .screen { min-height: 580px; }
+  h1 {
+  top: 3%;
+  right: 5%;
+  left: auto;
+  width: 90%;
+  font-size: clamp(29px, 8.4vw, 50px);
+  text-align: right;
+}
+  .home-actions { left: 6%; bottom: 23%; gap: 8px; }
+  .text-button { font-size: 23px; }
+  .instruction { top: 20%; font-size: 24px; }
+  .win-message { inset: 23% 6% 12%; font-size: clamp(36px, 10vw, 60px); }
+  .wake-button { bottom: 13%; }
+  #lamp { left: 73%; top: 28%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .text-button:hover { transform: none; }
+}
+
+/* Keep Hakao's button invisible while making him clickable. */
+.pet-button {
+  display: block;
+  width: 240px;
+  height: 240px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.pet-button:active .pet {
+  transform: translateY(2px);
+}
+
+/* Keep the fish above the decorative bubbles. */
+#pond {
+  z-index: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  
+}
+/* Hidden screens must stay hidden. */
+[hidden] {
+  display: none !important;
+}
+
+/* Centre the home-page cat. */
+#home .pet-stage {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 240px;
+  height: 240px;
+  transform: translate(-50%, -50%);
+}
+
+#meow-button {
+  display: block;
+  width: 240px;
+  height: 240px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+#home-cat {
+  display: block;
+  position: static;
+  width: 240px;
+  height: 240px;
+  margin: 0;
+  object-fit: contain;
+  image-rendering: pixelated;
+}
+/* Two stationary bubbles flash briefly where a fish was caught. */
+.catch-bubbles {
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  pointer-events: none;
+}
+
+.catch-bubbles span {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border: 2px solid #55bbc4;
+  border-radius: 50%;
+  box-shadow: inset 2px 2px 0 #e6ffff;
+}
+
+.catch-bubbles span:first-child {
+  left: 17px;
+  top: 24px;
+}
+
+.catch-bubbles span:last-child {
+  left: 34px;
+  top: 12px;
+}

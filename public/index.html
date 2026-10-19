@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#b6ddec">
+  <title>hakao’s world</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+  <link rel="icon" href="data:,">
+</head>
+<body>
+  <main>
+    <!-- Each section is a screen. JavaScript shows one at a time. -->
+ <section
+  id="home"
+  class="screen"
+  aria-labelledby="home-title"
+>
+  <h1 id="home-title" tabindex="-1">hakao’s world</h1>
+
+  <div class="pet-stage">
+    <button
+      id="meow-button"
+      class="pet-button"
+      aria-label="Hear Hakao meow"
+    >
+      <img
+        id="home-cat"
+        class="pet pixel-art"
+        src="assets/hakao-idle.gif"
+        width="240"
+        height="240"
+        alt="Hakao sitting, wagging his tail and blinking"
+      >
+    </button>
+
+    <p id="meal-note" hidden>nom nom… ♡</p>
+  </div>
+
+  <nav class="home-actions" aria-label="Play with Hakao">
+    <button id="feed-link" class="text-button">
+      feed hakao~
+    </button>
+
+    <button id="sleep-link" class="text-button">
+      let hakao sleep~
+    </button>
+  </nav>
+</section>
+    <section id="fishing" class="screen" aria-labelledby="fish-title" hidden>
+      <h1 id="fish-title" tabindex="-1">hakao’s fish</h1>
+      <p class="instruction">catch all of the fish to win!</p>
+      <button id="leave-fishing" class="text-button back-button">back to hakao</button>
+      
+      <div id="pond" aria-label="Catch the swimming fish"></div>
+      <p id="fish-status" class="sr-only" role="status" aria-live="polite"></p>
+    </section>
+
+    <section id="won" class="screen" aria-labelledby="won-title" hidden>
+      <h1 id="won-title" tabindex="-1">hakao’s fish</h1>
+      <div class="win-message">
+        <p>you caught<br>all the fish!</p>
+        <button id="serve-fish" class="text-button">click here to<br>feed hakao~</button>
+      </div>
+    </section>
+
+    <section id="sleep" class="screen night" aria-label="Hakao is sleeping" hidden>
+      <h1 tabindex="-1">hakao’s world</h1>
+      <div class="pet-stage sleeping-stage">
+        <img class="sleeping-pet pixel-art" src="assets/hakao-sleep.gif"
+          width="320" height="240" alt="Hakao snoring with floating Zs">
+      </div>
+      <!-- Your original pixel lamp; its button wakes Hakao. -->
+      <button id="lamp" aria-label="Turn on the light and wake up Hakao">
+        <img class="pixel-art" src="assets/lamp.png" width="80" height="80" alt="" draggable="false">
+      </button>
+      <button id="wake-link" class="text-button wake-button">wake up hakao~</button>
+    </section>
+  </main>
+</body>
+</html>
